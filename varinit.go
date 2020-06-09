@@ -30,11 +30,19 @@ func run(pass *analysis.Pass) (interface{}, error) {
 	inspect.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.Ident:
-			if n.Name == "gopher" {
-				pass.Reportf(n.Pos(), "identifyer is gopher")
+			if isHoge(n.Name) || isFuga(n.Name) {
+				pass.Reportf(n.Pos(), "identifier is meaningless")
 			}
 		}
 	})
 
 	return nil, nil
+}
+
+func isHoge(s string) bool {
+	return s == "hoge"
+}
+
+func isFuga(s string) bool {
+	return s == "fuga"
 }

@@ -1,7 +1,13 @@
 package a
 
-func f() {
-	// The pattern can be written in regular expression.
-	var gopher int // want "pattern"
-	print(gopher)  // want "identifyer is gopher"
+import "fmt"
+
+func a() {
+	var hoge string = "hoge" // want "identifier is meaningless"
+
+	fuga(hoge) // want "identifier is meaningless" "identifier is meaningless"
+}
+
+func fuga(s string) { // want "identifier is meaningless"
+	fmt.Println(s)
 }
